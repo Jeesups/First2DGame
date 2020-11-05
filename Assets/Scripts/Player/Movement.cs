@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody;
 
     private float movementSpeed = 1f;
-    private float jumpStrength = 2000f;
+    private float jumpStrength = 100f;
 
     private const float STATIC_SPEED = 10f;
 
@@ -51,7 +51,8 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && playerLandState == PlayerLandState.Grounded)
         {
-            rigidbody.AddForce(new Vector2(0f, STATIC_SPEED * jumpStrength * Time.deltaTime));
+            //By adding ForceMode we immidietaly uses force on object instead of gradually adding force to it, thus fixin the problem of low jumps
+            rigidbody.AddForce(new Vector2(0f, STATIC_SPEED * jumpStrength * Time.deltaTime), ForceMode2D.Impulse);
             
             playerLandState = PlayerLandState.MidAir;
         }
