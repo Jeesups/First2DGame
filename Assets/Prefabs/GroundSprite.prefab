@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 825079257297653032}
   - component: {fileID: 7786841409404071205}
   - component: {fileID: 1753173931477426349}
+  - component: {fileID: 4748631877170938939}
   - component: {fileID: 8871086714554182805}
   m_Layer: 0
   m_Name: GroundSprite
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +110,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4748631877170938939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185250664476209780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3f711ae3016a2478619e915c082f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 1842771825065746799, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
+    type: 3}
 --- !u!50 &8871086714554182805
 Rigidbody2D:
   serializedVersion: 4

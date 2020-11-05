@@ -6,14 +6,24 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody;
 
-    private float movementSpeed = 50f;
-    private float jumpStrength = 60f;
+    private float movementSpeed = 1f;
+    private float jumpStrength = 2000f;
+
+    private const float STATIC_SPEED = 10f;
 
     // Start is called before the first frame update
+
+    public enum PlayerLandState
+    {
+        Grounded,
+        MidAir
+    }
+
+    [SerializeField]private PlayerLandState playerLandState;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        
+        playerLandState = PlayerLandState.MidAir;
     }
 
     // Update is called once per frame
@@ -27,22 +37,46 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.AddForce(new Vector2(-10f * movementSpeed * Time.deltaTime, 0f));
+            //rigidbody.AddForce();
+            transform.Translate(new Vector2(-STATIC_SPEED * movementSpeed * Time.deltaTime, 0f));
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.AddForce(new Vector2(10f * movementSpeed * Time.deltaTime, 0f));
+            //rigidbody.AddForce();
+            transform.Translate(new Vector2(STATIC_SPEED * movementSpeed * Time.deltaTime, 0f));
         }
     }
 
     void Jump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && playerLandState == PlayerLandState.Grounded)
         {
-            rigidbody.AddForce(new Vector2(0f, 10f * jumpStrength * Time.deltaTime));
+            rigidbody.AddForce(new Vector2(0f, STATIC_SPEED * jumpStrength * Time.deltaTime));
+            
+            playerLandState = PlayerLandState.MidAir;
+        }
+    }
+
+    public void ChangePlayerState(PlayerLandState pls)
+    {
+        playerLandState = pls;
+    }
+    public PlayerLandState GetPlayerState()
+    {
+        return this.playerLandState;
+    }
+
+
+    //PS: REMEMBER THAT YOU HAVE 2D ENVIROMENT NOW ASSHOLE SO NORMAL ON COLLISION ENTER WONT WORK
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag.Equals("Ground"))
+        {    
+            playerLandState = PlayerLandState.Grounded;
         }
     }
 }
+
 
 
 
