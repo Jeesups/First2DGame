@@ -160,6 +160,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1174137301589708774, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
+        type: 3}
+      propertyPath: bulletObject
+      value: 
+      objectReference: {fileID: 6223344179701104721, guid: cb3b0ed01e7dfcb43802de369f316e3e,
+        type: 3}
     - target: {fileID: 1842771825065746799, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
         type: 3}
       propertyPath: m_Name
@@ -218,21 +224,6 @@ PrefabInstance:
     - target: {fileID: 4430226085899475649, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375545465796334957, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
-        type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375545465796334957, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375545465796334957, guid: a220fe8f0bb146b4ca9fd441a0ee5bf4,
-        type: 3}
-      propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
