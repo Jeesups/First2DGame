@@ -13,6 +13,13 @@ public class Movement : MonoBehaviour
 
     // Start is called before the first frame update
 
+    public enum PlayerMoveDirection
+    {
+        ToTheRight,
+        ToTheLeft
+    }
+
+
     public enum PlayerLandState
     {
         Grounded,
@@ -20,10 +27,12 @@ public class Movement : MonoBehaviour
     }
 
     [SerializeField]private PlayerLandState playerLandState;
+    private PlayerMoveDirection playerMoveDirection;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         playerLandState = PlayerLandState.MidAir;
+        playerMoveDirection = PlayerMoveDirection.ToTheRight;
     }
 
     // Update is called once per frame
@@ -39,11 +48,13 @@ public class Movement : MonoBehaviour
         {
             //rigidbody.AddForce();
             transform.Translate(new Vector2(-STATIC_SPEED * movementSpeed * Time.deltaTime, 0f));
+            playerMoveDirection = PlayerMoveDirection.ToTheLeft;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             //rigidbody.AddForce();
             transform.Translate(new Vector2(STATIC_SPEED * movementSpeed * Time.deltaTime, 0f));
+            playerMoveDirection = PlayerMoveDirection.ToTheRight;
         }
     }
 
@@ -65,6 +76,11 @@ public class Movement : MonoBehaviour
     public PlayerLandState GetPlayerState()
     {
         return this.playerLandState;
+    }
+
+    public PlayerMoveDirection GetPlayerMoveDirection()
+    {
+        return this.playerMoveDirection;
     }
 
 
